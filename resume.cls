@@ -128,7 +128,7 @@
 				\fi					
 				\ifcsname @phone\endcsname
 					\separate{@listSize}
-					{\itemStyle{@listSize} \href{tel: @phone}{\faIcon[light]{phone-square-alt}\iconSeparator\@phone}}
+					{\itemStyle{@listSize} \href{tel: \@phone}{\faIcon[light]{phone-square-alt}\iconSeparator\@phone}}
 				\fi
 					
 				\ifcsname @telegram\endcsname
