@@ -1,0 +1,52 @@
+\documentclass[english]{resume}
+\usepackage{babel}
+\usepackage{amsmath}
+\usepackage{xcolor}
+\usepackage{luacode}
+\usepackage{lipsum}
+
+\babelfont{rm}[Language=Default]{FreeSerif}
+
+\namefont{\fontspec{Times}}
+\name{Name}{Surname}
+
+\date{\today}
+\adress{City, street, etc..}
+\occupation{occupation}
+
+\email{your@mail.com}
+\phone{+7 (777) 777-77-77}
+\github{yourGit}
+\telegram{yourTelegram}
+
+\begin{document}
+\maketitle
+
+\cvsection{Education}
+\lipsum[1]
+\cvsubsection{High}
+
+	\begin{itemize}
+		\item City1
+			\begin{itemize}
+				\item your highschool1 \info{\ }{date - date}
+				\item your highschool2 \info{\ }{date - date}
+			\end{itemize}
+		\item City2
+			\begin{itemize}
+				\item your highschool3 \info{\ }{date - date}
+			\end{itemize}
+	\end{itemize}
+\cvsubsection{Higher}
+	\begin{itemize}
+		\item your university
+		\begin{itemize}
+			\item your faculty \info{\ }{date - date}
+		\end{itemize}
+	\end{itemize}
+	
+\cvsection{ETC}
+
+\lipsum[1-2]
+	
+\end{document}
