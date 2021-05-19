@@ -1,4 +1,4 @@
-\ProvidesClass{resume}[2021 v0.1 resume class]
+\ProvidesClass{resume}[2021 v0.2 resume class]
 
 \DeclareOption*{
   \PassOptionsToClass{\CurrentOption}{article}
@@ -81,8 +81,41 @@
 \def\phone#1{\def\@phone{#1}}
 \def\github#1{\def\@github{#1}}
 \def\telegram#1{\def\@telegram{#1}}
+\def\linkedin#1{\def\@linkedin{#1}}
 
 %%@maketitle settings
+
+
+\def\@maketitle{
+	\newpage
+	\null
+	\begin{center}%
+		\let \footnote \thanks
+		\vskip -0.7em 
+		{\fontsize{36pt}{1em}\bfseries \@namefont \@name\ \color{gray}\@surname \par}%
+		\vskip 0.4em
+		\lineskip .5em%
+		\begin{tabular}{c}
+			
+			\ifcsname @occupation\endcsname 
+				{\slshape\small\color{red}\@occupation}\\
+			\fi	
+			\ifcsname @adress\endcsname 
+				{\small\color{gray}\href{adress: \@adress}{\@adress}}
+			\fi
+			
+		\end{tabular}\par
+		\begin{tabular}{c}
+			
+			\small\color{gray}\itshape\@contacts
+			
+		\end{tabular}\par
+	\end{center}\par
+	\vspace{-3em}
+}
+
+%% Contacts List
+
 \def\separator{\textbar\medskip}
 \def\iconSeparator{\hspace{.4em}}
 
@@ -103,50 +136,30 @@
 	\fi
 }
 
-\def\@maketitle{
-	\newpage
-	\null
-	\begin{center}%
-		\let \footnote \thanks
-		\vskip -0.7em 
-		{\fontsize{36pt}{1em}\bfseries \@namefont \@name\ \color{gray}\@surname \par}%
-		\vskip 0.4em
-		\lineskip .5em%
-		\begin{tabular}{c}
-			\ifcsname @occupation\endcsname 
-				{\slshape\small\color{red}\@occupation}\\
-			\fi	
-			\ifcsname @adress\endcsname 
-				{\small\color{gray}\href{adress: \@adress}{\@adress}}\\
-			\fi
-		\end{tabular}\par
-		\begin{tabular}{c}
-			{ 	
-				\small				
-				\color{gray}
-				\itshape
-				
-				\ifcsname @email\endcsname
-					\separate{@listSize}
-					{\itemStyle{@listSize} \href{mailto: \@email}{\faIcon[light]{envelope}\iconSeparator\@email}}
-				\fi					
-				\ifcsname @phone\endcsname
-					\separate{@listSize}
-					{\itemStyle{@listSize} \href{tel: \@phone}{\faIcon[light]{phone-square-alt}\iconSeparator\@phone}}
-				\fi
+\def\@contacts{
+
+	\ifcsname @email\endcsname
+		\separate{@listSize}
+		{\itemStyle{@listSize} \href{mailto: \@email}{\faIcon[light]{envelope}\iconSeparator\@email}}
+	\fi	
 					
-				\ifcsname @telegram\endcsname
-					\separate{@listSize}
-					{\itemStyle{@listSize} \href{https://t.me/\@telegram}{\faIcon[light]{telegram}\iconSeparator\@telegram}}
-				\fi
+	\ifcsname @phone\endcsname
+		\separate{@listSize}
+		{\itemStyle{@listSize} \href{tel: \@phone}{\faIcon[light]{phone-square-alt}\iconSeparator\@phone}}
+	\fi
+					
+	\ifcsname @telegram\endcsname
+		\separate{@listSize}
+		{\itemStyle{@listSize} \href{https://t.me/\@telegram}{\faIcon[light]{telegram}\iconSeparator\@telegram}}
+	\fi
 				
-				\ifcsname @github\endcsname
-					\separate{@listSize}
-					{\itemStyle{@listSize} \href{https://github.com/\@github}{\faIcon[light]{github}\iconSeparator\@github}}
-				\fi
-			}
-		\end{tabular}\par
-		%{\normalsize \color{gray} \@cvdate}
-	\end{center}\par
-	\vspace{-3em}
+	\ifcsname @github\endcsname
+		\separate{@listSize}
+		{\itemStyle{@listSize} \href{https://github.com/\@github}{\faIcon[light]{github}\iconSeparator\@github}}
+	\fi
+	
+	\ifcsname @linkedin\endcsname
+		\separate{@listSize}
+		{\itemStyle{@listSize} \href{https://www.linkedin.com/in/\@linkedin}{\faIcon[light]{linkedin}\iconSeparator\@linkedin}}
+	\fi
 }
