@@ -1,2 +1,2 @@
 # resume
-LuaLaTeX resume class
+LuaLaTeX resume class with straightforward syntax.
