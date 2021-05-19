@@ -45,10 +45,14 @@
 \def\sectionRule{\color{gray}\leavevmode\leaders\hrule height 0.8pt\hfill\kern\z@}
 \def\subsectionColor#1{\directlua{color_segment("#1", 3, "black", "gray")}}
 
+
 \setcounter{secnumdepth}{0}
 
-\def\cvsection#1{\section{\sectionColor{#1}\sectionRule}}
-\def\cvsubsection#1{\subsection{\subsectionColor{#1}}}
+\let\oldsection\section
+\let\oldsubsection\subsection
+
+\def\section#1{\oldsection{\sectionColor{#1}\sectionRule}}
+\def\subsection#1{\oldsubsection{\subsectionColor{#1}}}
 
 
 %CV pagestyle
